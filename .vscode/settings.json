@@ -1,0 +1,4 @@
+{
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "markdown-pdf.outputDirectory": "build/markdown_pdf",
+}
