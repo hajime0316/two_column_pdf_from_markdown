@@ -1,7 +1,7 @@
 # Pandocコマンド
 
 ```sh
-pandoc test2.md -s -f markdown-auto_identifiers -t latex -o test.tex
+pandoc --data-dir=. test2.md -s -f markdown-auto_identifiers -t latex -o test.tex
 ```
 
 ## オプションの説明
