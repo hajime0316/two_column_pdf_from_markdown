@@ -31,11 +31,9 @@
 $if(title)$
 \title{$title$}
 $endif$
-
 $if(title)$
 \author{$author$}
 $endif$
-
 $if(title)$
 \date{$date$}
 $endif$
