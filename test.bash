@@ -16,6 +16,9 @@ line_num=1
 
 cat test.md | while read line; do
     if [ "$body_flag" == 0 ]; then
-        echo "$line" | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@
+        echo "$line" |
+            sed -E s/'^\# +'/'% '/ |
+            sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ |
+            sed -E s@'<\s*?/div\s*?>'@@ |
     fi
 done
