@@ -1,6 +1,7 @@
 #!/bin/bash
 
 header_flag=0
+body_flag=0
 
 # sed -E s/'^\# +'/'% '/ test.md
 # sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ test.md
@@ -14,5 +15,7 @@ line_num=1
 #     done
 
 cat test.md | while read line; do
-    echo "$line" | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@
+    if [ "$body_flag" == 0 ]; then
+        echo "$line" | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@
+    fi
 done
