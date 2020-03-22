@@ -26,5 +26,6 @@ cat test.md | while read line; do
             sed -E 's@</div *>@@'
     else
         echo "$line"
+        # TODO: 「#」を一段階分削除する
     fi
 done
