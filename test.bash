@@ -17,15 +17,12 @@ line_num=1
 cat test.md | while read line; do
     if [ "$body_flag" == 0 ]; then
         if [[ $line =~ ^\<div\ +class\ *=\ *\"date\"\ *\> ]]; then
-            echo "$line" |
-            sed -E 's/^<div +class *= *"date" *>/% /' |
-            sed -E 's@</div *>@@'
-        else
-            echo "$line" |
-                sed -E -n '/(^\# +|^<div +class *= *"author" *>)/p' |
-                sed -E 's/^\# +/% /' |
-                sed -E 's/^<div +class *= *"author" *>/% /' |
-                sed -E 's@</div *>@@'
+            echo hoge
         fi
+        echo "$line" |
+            sed -E -n '/(^\# +|^<div +class *= *("author"|"date") *>)/p' |
+            sed -E 's/^\# +/% /' |
+            sed -E 's/^<div +class *= *("author"|"date") *>/% /' |
+            sed -E 's@</div *>@@'
     fi
 done
