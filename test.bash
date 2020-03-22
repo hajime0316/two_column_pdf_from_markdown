@@ -8,7 +8,11 @@ header_flag=0
 
 line_num=1
 
-cat test.md | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@ |
-    while read line; do
-        echo "$line"
-    done
+# cat test.md | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@ |
+#     while read line; do
+#         echo "$line"
+#     done
+
+cat test.md | while read line; do
+    echo "$line" | sed -E s/'^\# +'/'% '/ | sed -E s/'^<\s*?div.*?("author"|"date")\s*?>'/'% '/ | sed -E s@'<\s*?/div\s*?>'@@
+done
