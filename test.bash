@@ -2,7 +2,7 @@
 
 body_flag=0
 
-cat test.md | while read line; do
+cat "${1:?No input file}" | while read line; do
     if [ "$body_flag" == 0 ]; then
         if [[ $line =~ ^\<div\ +class\ *=\ *\"date\"\ *\> ]]; then
             body_flag=1
