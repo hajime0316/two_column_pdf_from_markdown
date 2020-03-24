@@ -20,4 +20,6 @@ make_header() {
     done
 }
 
-make_header "$1" | pandoc --data-dir=. -s -f markdown-auto_identifiers -t latex -o "${1%.*}.tex"
+output_dir="${2:-build}"
+
+make_header "$1" | pandoc --data-dir=. -s -f markdown-auto_identifiers -t latex -o "$output_dir/${1%.*}.tex"
