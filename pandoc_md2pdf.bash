@@ -21,7 +21,7 @@ make_header() {
     done
 }
 
-output_dir="${2:-build}"
+output_dir="${2:-.}"
 input_file_name="${1##*/}"
 input_file_name_without_extension="${input_file_name%.*}"
 
