@@ -15,7 +15,8 @@ make_header() {
                 sed -E 's@</div *>@@'
         else
             echo "$line" |
-                sed -E 's/^#//'
+                sed -E 's/^#//' |
+                sed -E 's/!\[(.*?)\]\((.*?)\.(JPG|jpg|JPEG|jpeg|png|PNG)\)/![\1](\2.eps)/g'
         fi
     done
 }
