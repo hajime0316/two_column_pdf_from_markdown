@@ -26,6 +26,8 @@
 \def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
 \fi
 
+\setkeys{Gin}{width=7.0cm}
+
 \pagestyle{plain}
 
 $if(title)$
