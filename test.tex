@@ -26,7 +26,7 @@
 \def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
 \fi
 
-\setkeys{Gin}{width=7.0cm}          % 図の大きさのデフォルト定義
+\setkeys{Gin}{width=7.0cm}
 
 \pagestyle{plain}
 
@@ -56,5 +56,18 @@ piyo
 \includegraphics{DSC_0358.eps}
 \caption{モンスターエナジー}
 \end{figure}
+
+表の挿入テスト
+
+\begin{longtable}[]{@{}rllc@{}}
+\toprule
+右寄せ & 左寄せ & デフォルト & 中央寄せ\tabularnewline
+\midrule
+\endhead
+12 & 12 & 12 & 12\tabularnewline
+123 & 123 & 123 & 123\tabularnewline
+1 & 1 & 1 & 1\tabularnewline
+\bottomrule
+\end{longtable}
 
 \end{document}
