@@ -22,7 +22,8 @@ make_header() {
 }
 
 output_dir="${2:-.}"
-input_file_name="${1##*/}"
+input_file="${1:?No input file}"
+input_file_name="${input_file##*/}"
 input_file_name_without_extension="${input_file_name%.*}"
 
-make_header "$1" | pandoc --data-dir=. -s -f markdown-auto_identifiers -t latex -o "$output_dir/$input_file_name_without_extension.tex"
+make_header "$input_file" | pandoc --data-dir=. -s -f markdown-auto_identifiers -t latex -o "$output_dir/$input_file_name_without_extension.tex"
