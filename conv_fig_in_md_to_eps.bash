@@ -3,6 +3,11 @@
 # .mdファイルをスクレイピングして
 # 変換すべきファイルのPATHを取得
 
+scrape_fig_in_md(){
+    input_file="${1:?No input file}"
+    cat "$input_file" | sed -E -n '/!\[.*\]\(.*\.(JPG|jpg|JPEG|jpeg|PNG|png)\)/p' | sed -E 's/^.*!\[.*\]\((.*?)\).*$/\1/'
+}
+
 # bmepsコマンドで画像をepsに変換
 # 引数は1つ（file）
 # 入力ファイル名に.epsを付けたものを
