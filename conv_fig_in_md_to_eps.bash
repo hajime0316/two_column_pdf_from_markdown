@@ -4,7 +4,7 @@
 # 変換すべきファイルのPATHを取得
 
 scrape_fig_in_md() {
-    input_file="${1:?No input file}"
+    local input_file="${1:?No input file}"
     cat "$input_file" | sed -E -n '/!\[.*\]\(.*\.(JPG|jpg|JPEG|jpeg|PNG|png)\)/p' | sed -E 's/^.*!\[.*\]\((.*?)\).*$/\1/'
 }
 
@@ -14,8 +14,8 @@ scrape_fig_in_md() {
 # 入力ファイルと同じdirに出力
 
 conv_to_eps() {
-    input_file="${1:?No input file}"
-    input_file_without_extention="${input_file%.*}"
+    local input_file="${1:?No input file}"
+    local input_file_without_extention="${input_file%.*}"
 
     bmeps -c "$input_file" "$input_file_without_extention.eps"
 }
