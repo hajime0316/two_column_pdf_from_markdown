@@ -3,7 +3,7 @@
 # .mdファイルをスクレイピングして
 # 変換すべきファイルのPATHを取得
 
-scrape_fig_in_md(){
+scrape_fig_in_md() {
     input_file="${1:?No input file}"
     cat "$input_file" | sed -E -n '/!\[.*\]\(.*\.(JPG|jpg|JPEG|jpeg|PNG|png)\)/p' | sed -E 's/^.*!\[.*\]\((.*?)\).*$/\1/'
 }
@@ -20,4 +20,9 @@ conv_to_eps() {
     bmeps -c "$input_file" "$input_file_without_extention.eps"
 }
 
-conv_to_eps "$1"
+input_file="${1:?No input file}"
+if [[ ! $input_file =~ ^\./.*$ ]]; then
+    input_file="./$input_file"
+fi
+
+input_file_dir="${input_file%/*}"
