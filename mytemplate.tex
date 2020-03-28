@@ -1,0 +1,160 @@
+\documentclass[a4j]{jarticle}
+%\documentclass{jarticle}
+\usepackage{conf_jst}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{plistings}
+%\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\oddsidemargin -10mm % 15mm - 1inch(25．4mm)
+\evensidemargin -10mm
+\textwidth 180mm  % A4幅210mm - 15*2mm
+%\topmargin -10．4mm % 25mm - 25．4
+\topmargin -10mm % 25mm - 25．4
+\textheight 257mm % A4高さ297mm - 25*2mm
+%\headheight 10mm
+%\headsep 10mm
+
+\setcounter{figure}{0}              %ここで図番号の変更が行えます．
+\setcounter{table}{0}               %ここで表番号の変更が行えます．
+\setcounter{equation}{0}            %ここで式番号の変更が行えます．
+
+\if0
+\def\thefigure{\thesection\arabic{figure}}      %図番号の形式設定
+\def\thetable{\thesection\arabic{table}}        %表番号の形式設定
+\def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
+\fi
+
+\setkeys{Gin}{width=7.0cm}  % 図のデフォルトサイズ
+
+\pagestyle{plain}
+
+% \longtableをtwocolumn環境で使えるようにする
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[htbp]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[htbp]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
+
+$if(title)$
+\title{$title$}
+$endif$
+$if(title)$
+\author{$author$}
+$endif$
+$if(title)$
+\date{$date$}
+$endif$
+
+\begin{document}
+$if(has-frontmatter)$
+\frontmatter
+$endif$
+$if(title)$
+$if(beamer)$
+\frame{\titlepage}
+$else$
+\maketitle
+$endif$
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+$if(beamer)$
+\begin{frame}[allowframebreaks]
+$if(toc-title)$
+  \frametitle{$toc-title$}
+$endif$
+  \tableofcontents[hideallsubsections]
+\end{frame}
+$else$
+{
+$if(colorlinks)$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$if(linestretch)$
+\setstretch{$linestretch$}
+$endif$
+$if(has-frontmatter)$
+\mainmatter
+$endif$
+$body$
+
+$if(has-frontmatter)$
+\backmatter
+$endif$
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+$endif$
+  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$if(beamer)$
+\end{frame}
+$endif$
+
+$endif$
+$endif$
+$if(biblatex)$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+$else$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}

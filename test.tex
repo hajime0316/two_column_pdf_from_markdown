@@ -6,6 +6,8 @@
 \usepackage{listings}
 \usepackage{plistings}
 %\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{booktabs}
 
 \oddsidemargin -10mm % 15mm - 1inch(25．4mm)
 \evensidemargin -10mm
@@ -26,31 +28,77 @@
 \def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
 \fi
 
+\setkeys{Gin}{width=7.0cm}  % 図のデフォルトサイズ
+
 \pagestyle{plain}
 
+% \longtableをtwocolumn環境で使えるようにする
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[htbp]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[htbp]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
+
 \title{2020/03/10 研究報告資料}
-
-\author{}
-
-\date{}
+\author{氏名：田村　玄}
+\date{期間：2019/11/15 ～ 2020/03/22}
 
 \begin{document}
 \maketitle
 
-氏名：田村　玄
-
-期間：2019/11/15 ～ 2020/03/22
-
-\subsection{これはセクションテストです}
+\section{これはセクションテストです}
 
 hoge
 
-\subsubsection{これはサブセクションテストです}
+\subsection{これはサブセクションテストです}
 
 hoge
 
-\paragraph{これはサブサブセクションのテストです}
+\subsubsection{これはサブサブセクションのテストです}
 
 piyo
+
+図の挿入テスト
+
+\begin{figure}
+\centering
+\includegraphics{DSC_0358.eps}
+\caption{モンスターエナジー}
+\end{figure}
+
+もう一つ図を挿入
+
+\begin{figure}
+\centering
+\includegraphics{end.eps}
+\caption{はい終わり素子が逝った}
+\end{figure}
+
+表の挿入テスト
+
+\begin{longtable}[]{@{}rllc@{}}
+\toprule
+右寄せ & 左寄せ & デフォルト & 中央寄せ\tabularnewline
+\midrule
+\endhead
+12 & 12 & 12 & 12\tabularnewline
+123 & 123 & 123 & 123\tabularnewline
+1 & 1 & 1 & 1\tabularnewline
+\bottomrule
+\end{longtable}
 
 \end{document}
