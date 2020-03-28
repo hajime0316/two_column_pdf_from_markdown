@@ -26,3 +26,5 @@ if [[ ! $input_file =~ ^\./.*$ ]]; then
 fi
 
 input_file_dir="${input_file%/*}"
+
+scrape_fig_in_md "$input_file" | sed s@^@$input_file_dir/@ | xargs -n1 ./conv_to_eps.bash
