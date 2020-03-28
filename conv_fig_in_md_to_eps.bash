@@ -8,18 +8,6 @@ scrape_fig_in_md() {
     cat "$input_file" | sed -E -n '/!\[.*\]\(.*\.(JPG|jpg|JPEG|jpeg|PNG|png)\)/p' | sed -E 's/^.*!\[.*\]\((.*?)\).*$/\1/'
 }
 
-# bmepsコマンドで画像をepsに変換
-# 引数は1つ（file）
-# 入力ファイル名に.epsを付けたものを
-# 入力ファイルと同じdirに出力
-
-conv_to_eps() {
-    local input_file="${1:?No input file}"
-    local input_file_without_extention="${input_file%.*}"
-
-    bmeps -c "$input_file" "$input_file_without_extention.eps"
-}
-
 input_file="${1:?No input file}"
 if [[ ! $input_file =~ ^\./.*$ ]]; then
     input_file="./$input_file"
