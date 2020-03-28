@@ -21,6 +21,7 @@ make_header() {
     done
 }
 
+# TODO: デフォルトではoutput_dir = input_file_dirとする
 output_dir="${2:-.}"
 input_file="${1:?No input file}"
 input_file_name="${input_file##*/}"
