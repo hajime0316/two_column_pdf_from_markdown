@@ -8,4 +8,8 @@ input_file_dir="${input_file%/*}"
 input_file_name="${input_file##*/}"
 input_file_name_without_extension="${input_file_name%.*}"
 
-bmeps -c "$input_file" "$input_file_dir/$input_file_name_without_extention.eps"
+output_file_dir="${2:-$input_file_dir}"
+output_file="$output_file_dir/$input_file_name_without_extension.eps"
+
+echo "$output_file"
+bmeps -c "$input_file" "$output_file"
