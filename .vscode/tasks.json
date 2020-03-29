@@ -4,6 +4,24 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Conv Figure in Markdown to Eps",
+            "type": "shell",
+            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | conv_fig_in_md_to_eps.bash",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
+            "label": "Pandoc Markdown to pdf",
+            "type": "shell",
+            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
             "label": "echo",
             "type": "shell",
             "command": "echo Hello",
@@ -11,6 +29,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }
+        },
     ]
 }
