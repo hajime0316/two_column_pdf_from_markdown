@@ -1,4 +1,13 @@
 {
     "latex-workshop.latex.outDir": "%DIR%/build",
     "markdown-pdf.outputDirectory": "build/markdown_pdf",
+    "terminal.integrated.env.windows": {
+        "PATH": "${workspaceRoot}/scripts:${env:PATH}"
+    },
+    "terminal.integrated.env.linux": {
+        "PATH": "${workspaceRoot}/scripts:${env:PATH}"
+    },
+    "latex-workshop.latex.autoBuild.run": "never",
+    "terminal.integrated.automationShell.windows": null,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
 }

@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Conv Figure in Markdown to Eps",
+            "type": "shell",
+            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
+            "label": "Pandoc Markdown to pdf",
+            "type": "shell",
+            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
+            "label": "Build LaTeX",
+            "type": "shell",
+            "command": "echo \"${fileDirname}\\${fileBasenameNoExtension}.tex\" | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf -l -ot -kanji=utf8 -synctex=1 -output-directory=build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
+            "label": "Build Document",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Conv Figure in Markdown to Eps",
+                "Pandoc Markdown to pdf",
+                "Build LaTeX",
+                "Build LaTeX",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}
