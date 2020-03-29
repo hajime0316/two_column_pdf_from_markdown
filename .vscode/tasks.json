@@ -22,9 +22,12 @@
             }
         },
         {
-            "label": "echo",
-            "type": "shell",
-            "command": "echo Hello",
+            "label": "Build Document",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Conv Figure in Markdown to Eps",
+                "Pandoc Markdown to pdf",
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
