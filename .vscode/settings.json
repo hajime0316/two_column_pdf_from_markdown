@@ -8,4 +8,5 @@
         "PATH": "${workspaceRoot}/scripts:${env:PATH}"
     },
     "latex-workshop.latex.autoBuild.run": "never",
+    "terminal.integrated.automationShell.windows": null
 }
