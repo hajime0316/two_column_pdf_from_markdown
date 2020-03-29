@@ -36,6 +36,8 @@
             "dependsOn": [
                 "Conv Figure in Markdown to Eps",
                 "Pandoc Markdown to pdf",
+                "Build LaTeX",
+                "Build LaTeX",
             ],
             "group": {
                 "kind": "build",
