@@ -33,3 +33,9 @@ toオプション．変換先のファイル形式指定．
 ### imagemagick
 
 - https://imagemagick.org/script/download.php
+
+## windowsにおけるbashからのPDFの表示
+
+```sh
+start AcroRd32; pdfopen.exe --file build/test.pdf
+```
