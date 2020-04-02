@@ -31,4 +31,4 @@ input_file_name_without_extension="${input_file_name%.*}"
 
 output_dir="${2:-$input_file_dir}"
 
-make_header "$input_file" | pandoc --template=mytemplate.tex -s -f markdown-auto_identifiers -t latex -o "$output_dir/$input_file_name_without_extension.tex"
+make_header "$input_file" | pandoc --template=latex/mytemplate.tex -s -f markdown-auto_identifiers -t latex -o "$output_dir/$input_file_name_without_extension.tex"
