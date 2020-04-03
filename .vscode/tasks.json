@@ -22,6 +22,15 @@
             }
         },
         {
+            "label": "Move Style Files",
+            "type": "shell",
+            "command": "echo '${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs -i{} cp latex/conf_jst.sty latex/plistings.sty {}",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
             "label": "Build LaTeX",
             "type": "shell",
             "command": "echo \"${fileDirname}\\${fileBasenameNoExtension}.tex\" | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf -l -ot -kanji=utf8 -synctex=1 -output-directory=build",
