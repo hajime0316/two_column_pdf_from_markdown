@@ -9,4 +9,7 @@
     },
     "latex-workshop.latex.autoBuild.run": "never",
     "terminal.integrated.automationShell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
 }
