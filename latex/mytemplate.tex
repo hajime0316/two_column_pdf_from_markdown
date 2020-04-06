@@ -28,6 +28,10 @@
 \def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
 \fi
 
+% \tightlistの定義
+% これがないとlistがbuild出来ない
+\def\tightlist{\itemsep1pt\parskip0pt\parsep0pt}
+
 \setkeys{Gin}{width=7.0cm}  % 図のデフォルトサイズ
 
 \pagestyle{plain}
