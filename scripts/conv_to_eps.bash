@@ -1,7 +1,7 @@
 #!/bin/bash
 
 input_file="${1:?No input file}"
-if [[ ! $input_file =~ / ]]; then
+if [[ ! $input_file =~ ^(/|./) ]]; then
     input_file="./$input_file"
 fi
 input_file_dir="${input_file%/*}"
