@@ -1,7 +1,7 @@
 #!/bin/bash
 
 input_file="${1:?No input file}"
-if [[ ! $input_file =~ ^(/|./) ]]; then
+if [[ ! $input_file =~ ^(/|./|c) ]]; then
     input_file="./$input_file"
 fi
 
@@ -12,7 +12,7 @@ cat "$input_file" |
     sed -E 's/^.*!\[.*\]\((.*?)\).*$/\1/' |
     while read line; do
         figure_file=$line
-        if [[ ! $figure_file =~ ^(/|./) ]]; then
+        if [[ ! $figure_file =~ ^(/|./|c) ]]; then
             figure_file="./$figure_file"
         fi
         figure_file_dir="${figure_file%/*}"
