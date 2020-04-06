@@ -18,5 +18,5 @@ cat "$input_file" |
         figure_file_dir="${figure_file%/*}"
         output_dir="${2:-$input_file_dir}"
 
-        conv_to_eps.bash "${input_file_dir%/}/${figure_file#\./}" "${output_dir%/}/${figure_file_dir#\./}"
+        conv_to_eps.bash "${input_file_dir%/}/${figure_file#\./}" "${output_dir%/}${figure_file_dir#\.}"
     done
