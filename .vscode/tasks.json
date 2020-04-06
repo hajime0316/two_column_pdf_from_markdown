@@ -6,7 +6,7 @@
         {
             "label": "Conv Figure in Markdown to Eps",
             "type": "shell",
-            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs -i{} conv_fig_in_md_to_eps.bash {} build",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
