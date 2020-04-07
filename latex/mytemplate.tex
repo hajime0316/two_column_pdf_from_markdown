@@ -1,10 +1,10 @@
 \documentclass[a4j]{jarticle}
 %\documentclass{jarticle}
-\usepackage{latex/conf_jst}
+\usepackage{conf_jst}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{listings}
-\usepackage{latex/plistings}
+\usepackage{plistings}
 %\usepackage{fancyheadings}
 \usepackage{longtable}
 \usepackage{booktabs}
@@ -27,6 +27,10 @@
 \def\thetable{\thesection\arabic{table}}        %表番号の形式設定
 \def\theequation{\thesection\arabic{equation}}  %数式番号の形式設定
 \fi
+
+% \tightlistの定義
+% これがないとlistがbuild出来ない
+\def\tightlist{\itemsep1pt\parskip0pt\parsep0pt}
 
 \setkeys{Gin}{width=7.0cm}  % 図のデフォルトサイズ
 
