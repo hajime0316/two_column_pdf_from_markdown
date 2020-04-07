@@ -6,7 +6,7 @@
         {
             "label": "Conv Figure in Markdown to Eps",
             "type": "shell",
-            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
@@ -15,7 +15,7 @@
         {
             "label": "Pandoc Markdown to pdf",
             "type": "shell",
-            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
@@ -33,7 +33,10 @@
         {
             "label": "Build LaTeX",
             "type": "shell",
-            "command": "echo \"${fileDirname}\\${fileBasenameNoExtension}.tex\" | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf -l -ot -kanji=utf8 -synctex=1 -output-directory=build",
+            "command": "echo '-l -ot -kanji=utf8 -synctex=1 ${fileBasenameNoExtension}.tex' | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf",
+            "options": {
+                "cwd": "${fileDirname}/build"
+            },
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
@@ -45,6 +48,7 @@
             "dependsOn": [
                 "Conv Figure in Markdown to Eps",
                 "Pandoc Markdown to pdf",
+                "Move Style Files",
                 "Build LaTeX",
                 "Build LaTeX",
             ],
