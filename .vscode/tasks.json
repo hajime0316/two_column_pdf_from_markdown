@@ -33,7 +33,10 @@
         {
             "label": "Build LaTeX",
             "type": "shell",
-            "command": "echo \"${fileDirname}\\${fileBasenameNoExtension}.tex\" | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf -l -ot -kanji=utf8 -synctex=1 -output-directory=build",
+            "command": "echo '-l -ot -kanji=utf8 -synctex=1 ${fileBasenameNoExtension}.tex' | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf",
+            "options": {
+                "cwd": "${fileDirname}/build"
+            },
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
