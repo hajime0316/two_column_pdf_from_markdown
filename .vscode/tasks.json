@@ -15,7 +15,7 @@
         {
             "label": "Pandoc Markdown to pdf",
             "type": "shell",
-            "command": "echo '${file}' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared",
