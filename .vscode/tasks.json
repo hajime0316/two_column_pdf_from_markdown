@@ -58,6 +58,7 @@
             "label": "Build Document",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "Make Build Directory",
                 "Conv Figure in Markdown to Eps",
                 "Pandoc Markdown to pdf",
                 "Move Style Files",
