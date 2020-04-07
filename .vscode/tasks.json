@@ -4,6 +4,18 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Make Build Directory",
+            "type": "shell",
+            "command": "mkdir -p build",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        {
             "label": "Conv Figure in Markdown to Eps",
             "type": "shell",
             "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
@@ -46,6 +58,7 @@
             "label": "Build Document",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "Make Build Directory",
                 "Conv Figure in Markdown to Eps",
                 "Pandoc Markdown to pdf",
                 "Move Style Files",
