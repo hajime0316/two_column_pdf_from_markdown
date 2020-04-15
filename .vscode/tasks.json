@@ -12,46 +12,46 @@
             },
             "presentation": {
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "shared"
             }
         },
         {
             "label": "Conv Figure in Markdown to Eps",
             "type": "shell",
-            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs conv_fig_in_md_to_eps.bash",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@/@g' | xargs conv_fig_in_md_to_eps.bash",
             "presentation": {
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "shared"
             }
         },
         {
             "label": "Pandoc Markdown to pdf",
             "type": "shell",
-            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs pandoc_md2pdf.bash",
+            "command": "echo '${file} ${fileDirname}/build' | sed -E 's@\\\\\\@/@g' | xargs pandoc_md2pdf.bash",
             "presentation": {
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "shared"
             }
         },
         {
             "label": "Move Style Files",
             "type": "shell",
-            "command": "echo '${fileDirname}/build' | sed -E 's@\\\\\\@\/@g' | xargs -i{} cp latex/conf_jst.sty latex/plistings.sty {}",
+            "command": "echo '${fileDirname}/build' | sed -E 's@\\\\\\@/@g' | xargs -i{} cp latex/conf_jst.sty latex/plistings.sty {}",
             "presentation": {
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "shared"
             }
         },
         {
             "label": "Build LaTeX",
             "type": "shell",
-            "command": "echo '-l -ot -kanji=utf8 -synctex=1 ${fileBasenameNoExtension}.tex' | sed -E 's@\\\\\\@\/@g' | xargs ptex2pdf",
+            "command": "echo '-l -ot -kanji=utf8 -synctex=1 ${fileBasenameNoExtension}.tex' | sed -E 's@\\\\\\@/@g' | xargs ptex2pdf",
             "options": {
                 "cwd": "${fileDirname}/build"
             },
             "presentation": {
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "shared"
             }
         },
         {
@@ -63,12 +63,30 @@
                 "Pandoc Markdown to pdf",
                 "Move Style Files",
                 "Build LaTeX",
-                "Build LaTeX",
+                "Build LaTeX"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
+        {
+            "label": "View PDF",
+            "type": "shell",
+            "windows": {
+                "command": "start AcroRd32; echo '--file ${fileBasenameNoExtension}.pdf' | sed -E 's@\\\\\\@/@g' | xargs pdfopen",
+                "options": {
+                    "cwd": "${fileDirname}/build"
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
     ]
 }
